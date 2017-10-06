@@ -18,15 +18,14 @@ export class CanvasComponent {
 
   public drawImageFromFile(file: File) {
     const fileReader = new FileReader();
-    fileReader.onload = event => {
-      const imageUrl = event.target['result'];
-      const image = new Image();
-      image.onload = () => {
-        this.getContext().drawImage(image, 0, 0, this.width, this.height);
-      };
-      image.src = imageUrl;
-    }
+    fileReader.onload = event => this.drawImageFromUrl(event.target['result']);
     fileReader.readAsDataURL(file);
+  }
+
+  public drawImageFromUrl(imageUrl: string) {
+    const image = new Image();
+    image.onload = () => this.getContext().drawImage(image, 0, 0, this.width, this.height);
+    image.src = imageUrl;
   }
 
   public getImageData() {

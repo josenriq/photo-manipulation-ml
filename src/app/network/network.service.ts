@@ -5,6 +5,7 @@ import { Network, Architect, Trainer } from 'synaptic';
 export class NetworkService {
 
   private network: Network;
+  private _isTrained: boolean = false;
 
   constructor() {
     this.network = new Architect.Perceptron(27, 8, 3);
@@ -12,6 +13,7 @@ export class NetworkService {
 
   load(data) {
     this.network = Architect.Perceptron.fromJSON(data);
+    this._isTrained = true;
   }
 
   toJSON() {
@@ -31,7 +33,13 @@ export class NetworkService {
         every: 10,
         do: iterationCallback
       }
+    }).then(() => {
+      this._isTrained = true;
     });
+  }
+
+  get isTrained() {
+    return this._isTrained;
   }
 
   activate(input) {

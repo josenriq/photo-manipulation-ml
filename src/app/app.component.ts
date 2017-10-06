@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NetworkService } from './network/network.service';
 import { CanvasComponent } from './canvas/canvas.component';
 import { HttpClient } from '@angular/common/http';
@@ -9,15 +9,15 @@ import saveAs from 'save-as';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   @ViewChild('canvasInput') canvasInput: CanvasComponent;
   @ViewChild('canvasOutput') canvasOutput: CanvasComponent;
   @ViewChild('canvasSource') canvasSource: CanvasComponent;
   @ViewChild('canvasResult') canvasResult: CanvasComponent;
 
-  canvasWidth: number = 320;
-  canvasHeight: number = 240;
+  canvasWidth: number = 600;
+  canvasHeight: number = 350;
 
   isTraining: boolean = false;
   error: number;
@@ -25,6 +25,13 @@ export class AppComponent {
   rate: number;
 
   constructor(private network: NetworkService, private http: HttpClient) {
+  }
+
+  ngOnInit() {
+    // Load sample data
+    this.canvasInput.drawImageFromUrl('/assets/car-beetle-red.png');
+    this.canvasOutput.drawImageFromUrl('/assets/car-beetle-blue.png');
+    this.canvasSource.drawImageFromUrl('/assets/car-jetta-red.png');
   }
 
   loadNetwork(file) {
@@ -117,6 +124,11 @@ export class AppComponent {
   }
 
   generate() {
+    if (!this.network.isTrained) {
+      alert('Train the neural network first :)');
+      return;
+    }
+
     const sourceData = this.canvasSource.getImageData();
     const resultData = this.canvasResult.getImageData();
 
