@@ -97,7 +97,7 @@ export class AppComponent {
 
   getPixel(pixelArray, x, y) {
     const PIXEL_SIZE = 4;
-    const index = x + (y * this.canvasWidth);
+    const index = (x + (y * this.canvasWidth)) * PIXEL_SIZE;
     const pixels = pixelArray.slice(index, index + PIXEL_SIZE);
     if (pixels.length === PIXEL_SIZE) {
       return [
@@ -112,6 +112,8 @@ export class AppComponent {
   generate() {
     const sourceData = this.canvasSource.getImageData();
     const resultData = this.canvasResult.getImageData();
+
+    const PIXEL_SIZE = 4;
 
     for (let x = 0; x < this.canvasWidth; x++) {
       for (let y = 0; y < this.canvasHeight; y++) {
@@ -128,10 +130,13 @@ export class AppComponent {
 
         const output = this.network.activate(input);
 
-        const index = x + (y * this.canvasWidth);
+
+        const index = (x + (y * this.canvasWidth)) * PIXEL_SIZE;
+
         resultData.data[index + 0] = output[0] * 255;
         resultData.data[index + 1] = output[1] * 255;
         resultData.data[index + 2] = output[2] * 255;
+        resultData.data[index + 3] = 255;
       }
     }
 
