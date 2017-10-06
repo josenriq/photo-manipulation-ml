@@ -15,23 +15,30 @@
     </div>
     <div class="col-12 col-md-4 text-center align-self-center">
       <div *ngIf="!isTraining">
-        <div class="mb-1">
-          <button type="button"
-            class="btn btn-outline-secondary"
-            (click)="pickerNetwork.open()">
-            Load...
-          </button>
-          <app-file-picker #pickerNetwork
-            [accept]="'.json'"
-            (onFileSelected)="loadNetwork($event)"
-          ></app-file-picker>
-        </div>
         <div>
           <button type="button"
             class="btn btn-outline-primary"
             (click)="train()">
             Train >
           </button>
+        </div>
+        <div class="mt-1">
+          <div class="btn-group">
+            <button type="button"
+              class="btn btn-sm btn-outline-secondary"
+              (click)="pickerNetwork.open()">
+              Load
+            </button>
+            <button type="button"
+              class="btn btn-sm btn-outline-secondary"
+              (click)="save()">
+              Save
+            </button>
+          </div>
+          <app-file-picker #pickerNetwork
+            [accept]="'.json'"
+            (onFileSelected)="loadNetwork($event)"
+          ></app-file-picker>
         </div>
       </div>
       <div *ngIf="isTraining">

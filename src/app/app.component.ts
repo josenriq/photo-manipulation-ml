@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NetworkService } from './network/network.service';
 import { CanvasComponent } from './canvas/canvas.component';
 import { HttpClient } from '@angular/common/http';
+import saveAs from 'save-as';
 
 @Component({
   selector: 'app-root',
@@ -39,6 +40,12 @@ export class AppComponent {
         this.network.load(data);
       });
     });
+  }
+
+  save() {
+    const json = this.network.toJSON();
+    const blob = new Blob([JSON.stringify(json)], { type: 'application/json;charset=utf-8' });
+    saveAs(blob, 'network.json');
   }
 
   train() {

@@ -14,6 +14,10 @@ export class NetworkService {
     this.network = Architect.Perceptron.fromJSON(data);
   }
 
+  toJSON() {
+    return this.network.toJSON();
+  }
+
   train({ data, iterationCallback = null }: { data: any, iterationCallback?: Function }) {
     const trainer = new Trainer(this.network);
     return trainer.trainAsync(data, {
