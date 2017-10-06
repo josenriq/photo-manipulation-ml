@@ -1,6 +1,6 @@
 {
-  "name": "nn",
-  "version": "0.0.0",
+  "name": "photo-manipulation-ml",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
