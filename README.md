@@ -1,5 +1,7 @@
 # Photo Filter & Manipulation using AI
 
+### Demo: https://linktothapast.github.io/photo-manipulation-ml/
+
 Synaptic
 https://github.com/cazala/synaptic
 
