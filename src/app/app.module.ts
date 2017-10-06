@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NetworkService } from './network/network.service';
 import { CanvasComponent } from './canvas/canvas.component';
 import { FilePickerComponent } from './file-picker/file-picker.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FilePickerComponent } from './file-picker/file-picker.component';
     FilePickerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     NetworkService

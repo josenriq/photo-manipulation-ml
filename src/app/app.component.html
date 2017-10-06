@@ -15,11 +15,24 @@
     </div>
     <div class="col-12 col-md-4 text-center align-self-center">
       <div *ngIf="!isTraining">
-        <button type="button"
-          class="btn btn-outline-secondary"
-          (click)="train()">
-          Train >
-        </button>
+        <div class="mb-1">
+          <button type="button"
+            class="btn btn-outline-secondary"
+            (click)="pickerNetwork.open()">
+            Load...
+          </button>
+          <app-file-picker #pickerNetwork
+            [accept]="'.json'"
+            (onFileSelected)="loadNetwork($event)"
+          ></app-file-picker>
+        </div>
+        <div>
+          <button type="button"
+            class="btn btn-outline-primary"
+            (click)="train()">
+            Train >
+          </button>
+        </div>
       </div>
       <div *ngIf="isTraining">
         <p class="mb-1 text-muted">Training...</p>
@@ -71,7 +84,7 @@
       </div>
       <div class="col-12 col-md-4 text-center align-self-center">
         <button type="button"
-          class="btn btn-outline-primary"
+          class="btn btn-primary"
           (click)="generate()">
           Generate >
         </button>

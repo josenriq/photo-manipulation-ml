@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NetworkService } from './network/network.service';
 import { CanvasComponent } from './canvas/canvas.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,22 @@ export class AppComponent {
   iterations: number;
   rate: number;
 
-  constructor(private network: NetworkService) {
+  constructor(private network: NetworkService, private http: HttpClient) {
+  }
+
+  loadNetwork(file) {
+    return new Promise(resolve => {
+      const fileReader = new FileReader();
+      fileReader.onload = event => {
+        const fileUrl = event.target['result'];
+        resolve(fileUrl);
+      }
+      fileReader.readAsDataURL(file);
+    }).then((url: string) => {
+      this.http.get(url).subscribe(data => {
+        this.network.load(data);
+      });
+    });
   }
 
   train() {
