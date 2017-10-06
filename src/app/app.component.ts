@@ -130,8 +130,8 @@ export class AppComponent {
 
         const index = x + (y * this.canvasWidth);
         resultData.data[index + 0] = output[0] * 255;
-        resultData.data[index + 1] = output[0] * 255;
-        resultData.data[index + 2] = output[0] * 255;
+        resultData.data[index + 1] = output[1] * 255;
+        resultData.data[index + 2] = output[2] * 255;
       }
     }
 
