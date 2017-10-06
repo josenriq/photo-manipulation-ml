@@ -29,9 +29,12 @@ export class CanvasComponent {
     fileReader.readAsDataURL(file);
   }
 
-  // public invert() {
-  //   const data = this.getContext().getImageData(0, 0, this.width, this.height);
-  //   console.log(data);
-  // }
+  public getImageData() {
+    return this.getContext().getImageData(0, 0, this.width, this.height);
+  }
+
+  public putImageData(data) {
+    return this.getContext().putImageData(data, 0, 0);
+  }
 
 }

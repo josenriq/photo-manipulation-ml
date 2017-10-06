@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { NetworkService } from './network/network.service';
 import { CanvasComponent } from './canvas/canvas.component';
 import { FilePickerComponent } from './file-picker/file-picker.component';
 
@@ -14,7 +15,9 @@ import { FilePickerComponent } from './file-picker/file-picker.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    NetworkService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
