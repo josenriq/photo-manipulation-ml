@@ -29,9 +29,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // Load sample data
-    this.canvasInput.drawImageFromUrl('/assets/car-beetle-red.png');
-    this.canvasOutput.drawImageFromUrl('/assets/car-beetle-blue.png');
-    this.canvasSource.drawImageFromUrl('/assets/car-jetta-red.png');
+    this.canvasInput.drawImageFromUrl('assets/car-beetle-red.png');
+    this.canvasOutput.drawImageFromUrl('assets/car-beetle-blue.png');
+    this.canvasSource.drawImageFromUrl('assets/car-jetta-red.png');
   }
 
   loadNetwork(file) {
