@@ -489,7 +489,7 @@ var NetworkService = (function () {
             //log: 1000,
             cost: __WEBPACK_IMPORTED_MODULE_1_synaptic__["Trainer"].cost.COST_ENTROPY,
             schedule: {
-                every: 10,
+                every: 1,
                 do: iterationCallback
             }
         }).then(function () {
