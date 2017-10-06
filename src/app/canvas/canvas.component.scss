@@ -1,0 +1,16 @@
+
+.sizer {
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  position: relative;
+  border: 1px solid #CCC;
+}
+
+canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

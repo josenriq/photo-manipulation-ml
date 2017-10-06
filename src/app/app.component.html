@@ -1,3 +1,37 @@
 <div class="container py-5">
-  Holis!
+
+  <div class="row">
+    <div class="col-12 col-md-4 text-center">
+      <label class="text-muted">Input</label>
+      <div>
+        <app-canvas #canvasInput
+          class="d-block"
+          style="cursor:pointer"
+          (click)="pickerInput.open()"
+        ></app-canvas>
+        <app-file-picker #pickerInput
+          (onFileSelected)="canvasInput.drawImageFromFile($event)"
+        ></app-file-picker>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 text-center align-self-center">
+      <button type="button"
+        class="btn btn-outline-secondary">
+        Train >
+      </button>
+    </div>
+    <div class="col-12 col-md-4 text-center">
+      <label class="text-muted">Output</label>
+      <div>
+        <app-canvas #canvasOutput
+          class="d-block"
+          style="cursor:pointer"
+          (click)="pickerOutput.open()"
+        ></app-canvas>
+        <app-file-picker #pickerOutput
+          (onFileSelected)="canvasOutput.drawImageFromFile($event)"
+        ></app-file-picker>
+      </div>
+    </div>
+  </div>
 </div>
