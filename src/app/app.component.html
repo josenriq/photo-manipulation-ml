@@ -5,8 +5,7 @@
       <label class="text-muted">Input</label>
       <div>
         <app-canvas #canvasInput
-          class="d-block"
-          style="cursor:pointer"
+          class="clickable"
           (click)="pickerInput.open()"
         ></app-canvas>
         <app-file-picker #pickerInput
@@ -24,13 +23,43 @@
       <label class="text-muted">Output</label>
       <div>
         <app-canvas #canvasOutput
-          class="d-block"
-          style="cursor:pointer"
+          class="clickable"
           (click)="pickerOutput.open()"
         ></app-canvas>
         <app-file-picker #pickerOutput
           (onFileSelected)="canvasOutput.drawImageFromFile($event)"
         ></app-file-picker>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-dark text-white">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-md-4 text-center">
+        <label class="text-muted">Test</label>
+        <div>
+          <app-canvas #canvasTest
+            class="clickable"
+            (click)="pickerTest.open()"
+          ></app-canvas>
+          <app-file-picker #pickerTest
+            (onFileSelected)="canvasTest.drawImageFromFile($event)"
+          ></app-file-picker>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 text-center align-self-center">
+        <button type="button"
+          class="btn btn-outline-primary">
+          Generate >
+        </button>
+      </div>
+      <div class="col-12 col-md-4 text-center">
+        <label class="text-muted">Result</label>
+        <div>
+          <app-canvas #canvasResult></app-canvas>
+        </div>
       </div>
     </div>
   </div>
